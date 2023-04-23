@@ -6,27 +6,65 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Button } from './Button';
+
 import images from '../assets';
 // import { isMobile } from 'web3modal';
 
-const MenuItems = (isMobile) => {
-  const generateLink = () => {};
+const MenuItems = ({ isMobile, active, setActive }) => {
+  const generateLink = (i) => {
+    switch (i) {
+      case 0:
+        return '/';
+
+      case 1:
+        return '/createdNfts';
+
+      case 2:
+        return '/MyNfts';
+
+      default:
+        return '/';
+    }
+  };
 
   return (
     <ul
       className={`list-none flexCenter flex-row ${
-        isMobile && 'flex-col h-full '
+        isMobile && 'flex-col h-full'
       }`}
     >
       {['Explore NFTs', 'Listed NFTs', 'My NFTs'].map((item, i) => (
-        <li key={i}></li>
+        <li
+          key={i}
+          onClick={() => {
+            setActive(item);
+          }}
+          className={`flex flex-row items-center font-poppins font-semibold text-base dark:hover:text-white hover:text-nft-dark mx-3
+            ${
+              active === item
+                ? 'dark:text-white text-nft-black-1'
+                : 'dark:text-nft-gray-3 text-nft-gray-1 '
+            }
+          `}
+        >
+          <Link href={generateLink(i)}>{item}</Link>
+        </li>
       ))}
     </ul>
   );
 };
 
+const ButtonGroup = () => {
+  const hasConnected = false;
+
+  return hasConnected ? <Button /> : <Button />;
+};
+
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
+
+  const [active, setActive] = useState('Explore NFTs');
 
   return (
     <nav
@@ -74,10 +112,12 @@ export const Navbar = () => {
         </div>
       </div>
 
-      <div className="md:hidden flex ">
-        <ul className="list-none flexCenter flex-row">
-          <MenuItems />
-        </ul>
+      <div className="md:hidden flex">
+        <MenuItems active={active} setActive={setActive} />
+
+        <div className="ml-4">
+          <ButtonGroup />
+        </div>
       </div>
     </nav>
   );
