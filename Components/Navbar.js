@@ -97,7 +97,7 @@ export const Navbar = () => {
             className="flexCenter md:hidden cursor-pointer"
             onClick={() => {}}
           >
-            <Image src={images.logo02} width={32} height={32} alt="logo" />
+            <Image ge src={images.logo02} width={32} height={32} alt="logo" />
             <p className="dark:text-white text-nft-black-1 font-semibold text-lg ml-1">
               CryptoK
             </p>
