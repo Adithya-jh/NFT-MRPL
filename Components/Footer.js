@@ -5,8 +5,18 @@ import { useTheme } from 'next-themes';
 import images from '../assets';
 import Button from './Button';
 
+const FooterLinks = ({ heading, items }) => {
+  <div>
+    <h3>{heading}</h3>
+    {items.map((item, index) => {
+      <p key={index}>{item}</p>;
+    })}
+  </div>;
+};
+
 export const Footer = () => {
   const { theme } = useTheme();
+  const items = ['Explore', 'How it Works', 'Contact Us'];
   return (
     <footer className="flexCenter flex-col border-t dark:border-nft-black-1 border-nft-gray-1 sm:py-8 py-16">
       <div className=" w-full  minmd:w-4/5 flex flex-row md:flex-col sm:p-4 p-16 ">
@@ -34,6 +44,28 @@ export const Footer = () => {
             />
             <div className="flex-initial ">
               <Button btnName="Email Me" classStyles="rounded-md" />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="flex-1 flexBetweenStart flex-wrap ml-10 md:ml-0 md:mt-8">
+            {/* <FooterLinks
+              heading="Cryptokat"
+              items={['Explore', 'How it Works', 'Contact Us']}
+            /> */}
+
+            <div className="flex flex-col">
+              <h3>Cryptokat</h3>
+              {/* {items.map((item, index) => {
+              <p key={index}>{item}</p>;
+            })} */}
+
+              <div className="flex flex-col">
+                <p>Explore</p>
+                <p>How it Works</p>
+                <p>Contact Us</p>
+              </div>
             </div>
           </div>
         </div>
