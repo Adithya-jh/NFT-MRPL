@@ -6,12 +6,22 @@ import images from '../assets';
 import Button from './Button';
 
 const FooterLinks = ({ heading, items }) => {
-  <div>
-    <h3>{heading}</h3>
-    {items.map((item, index) => {
-      <p key={index}>{item}</p>;
-    })}
-  </div>;
+  return (
+    <div className="flex-1 justify-start items-start">
+      <h3 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl mb-10">
+        {heading}
+      </h3>
+      {items.map((item, index) => (
+        <p
+          key={index}
+          className="font-poppins dark:text-white text-nft-black-1 font-normal 
+          text-base cursor-pointer dark:hover:text-nft-gray-1 hover:text-nft-black-1 my-3"
+        >
+          {item}
+        </p>
+      ))}
+    </div>
+  );
 };
 
 export const Footer = () => {
@@ -48,27 +58,24 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div>
-          <div className="flex-1 flexBetweenStart flex-wrap ml-10 md:ml-0 md:mt-8">
-            {/* <FooterLinks
-              heading="Cryptokat"
-              items={['Explore', 'How it Works', 'Contact Us']}
-            /> */}
+        {/* <div> */}
+        <div className="flex-1 flexBetweenStart flex-wrap ml-10 md:ml-0 md:mt-8">
+          <FooterLinks
+            heading="Cryptokat"
+            items={['Explore', 'How it Works', 'Contact Us']}
+          />
 
-            <div className="flex flex-col">
-              <h3>Cryptokat</h3>
-              {/* {items.map((item, index) => {
-              <p key={index}>{item}</p>;
-            })} */}
-
-              <div className="flex flex-col">
-                <p>Explore</p>
-                <p>How it Works</p>
-                <p>Contact Us</p>
-              </div>
-            </div>
-          </div>
+          <FooterLinks
+            heading="Support"
+            items={[
+              'Help Center',
+              'Terms of Service',
+              'Legal',
+              'Privacy Policy',
+            ]}
+          />
         </div>
+        {/* </div> */}
       </div>
 
       <div className="flexCenter w-full mt-5 border-t dark:border-nft-black-1 border-nft-gray-1 sm:px-4 px-16 ">
@@ -78,65 +85,62 @@ export const Footer = () => {
           </p>
 
           <div className="flex flex-row sm:mt-4">
-            {
-              // [
-              //   images.instagram,
-              //   images.twitter,
-              //   images.telegram,
-              //   images.discord,
-              // ].map((image, index) => {
-              //   <div className="mx-2 cursor-pointer" key={index}>
-              //     <Image
-              //       src={image}
-              //       width={24}
-              //       height={24}
-              //       alt="socials"
-              //       className={theme === 'light' && 'filter invert'}
-              //     />
-              //   </div>;
-              // })
-
-              <div className="mx-4 cursor-pointer flex flex-row">
+            {[
+              images.instagram,
+              images.twitter,
+              images.telegram,
+              images.discord,
+            ].map((image, index) => {
+              <div className="mx-2 cursor-pointer" key={index}>
                 <Image
-                  src={images.instagram}
+                  src={image}
                   width={24}
                   height={24}
                   alt="socials"
-                  className={
-                    (theme === 'light' && 'filter invert mx-2') || 'mx-2'
-                  }
+                  className={theme === 'light' && 'filter invert'}
                 />
-                <Image
-                  src={images.twitter}
-                  width={24}
-                  height={24}
-                  alt="social"
-                  className={
-                    (theme === 'light' && 'filter invert mx-2') || 'mx-2'
-                  }
-                />
+              </div>;
+            })}
+            <div className="mx-4 cursor-pointer flex flex-row">
+              <Image
+                src={images.instagram}
+                width={24}
+                height={24}
+                alt="socials"
+                className={
+                  (theme === 'light' && 'filter invert mx-2') || 'mx-2'
+                }
+              />
+              <Image
+                src={images.twitter}
+                width={24}
+                height={24}
+                alt="social"
+                className={
+                  (theme === 'light' && 'filter invert mx-2') || 'mx-2'
+                }
+              />
 
-                <Image
-                  src={images.telegram}
-                  width={24}
-                  height={24}
-                  alt="socials"
-                  className={
-                    (theme === 'light' && 'filter invert mx-2') || 'mx-2'
-                  }
-                />
+              <Image
+                src={images.telegram}
+                width={24}
+                height={24}
+                alt="socials"
+                className={
+                  (theme === 'light' && 'filter invert mx-2') || 'mx-2'
+                }
+              />
 
-                <Image
-                  src={images.discord}
-                  width={24}
-                  height={24}
-                  alt="socials"
-                  className={
-                    (theme === 'light' && 'filter invert mx-2') || 'mx-2'
-                  }
-                />
-              </div>
-            }
+              <Image
+                src={images.discord}
+                width={24}
+                height={24}
+                alt="socials"
+                className={
+                  (theme === 'light' && 'filter invert mx-2') || 'mx-2'
+                }
+              />
+            </div>
           </div>
 
           {/* <div className="flex flex-row sm:mt-4">
