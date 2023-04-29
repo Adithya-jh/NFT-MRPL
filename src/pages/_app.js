@@ -1,7 +1,7 @@
-import '@/styles/globals.css';
 import { ThemeProvider } from 'next-themes';
 import Script from 'next/script';
 
+import '@/styles/globals.css';
 import { Navbar } from '../../Components/Navbar';
 import { Footer } from '../../Components/Footer';
 
