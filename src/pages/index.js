@@ -7,11 +7,13 @@ import images from '../../assets';
 
 import { useRef, useEffect, useState } from 'react';
 import { makeId } from '../../utils/makeId';
+import { useTheme } from 'next-themes';
 
 export default function Home() {
   const parentRef = useRef(null);
   const scrollRef = useRef(null);
   const [width, setWidth] = useState(0);
+  const { theme, setTheme } = useTheme();
   return (
     <div className="flex justify-center sm:px-4 p-12 ">
       <div className="w-full minmd:w-4/5 ">
@@ -28,7 +30,7 @@ export default function Home() {
             Best Creators
           </h1>
 
-          <div className="relative flex-1 max-w-full flex mt-3" ref={parentRef}>
+          <div className="relative flex-1 flex mt-3" ref={parentRef}>
             <div
               className="flex flex-row w-max overflow-x-scroll no-scrollbar select-none"
               ref={scrollRef}
@@ -44,6 +46,30 @@ export default function Home() {
                   />
                 );
               })}
+
+              <>
+                <div
+                  onClick={() => {}}
+                  className="absolute w-8 h-16 minlg:w-12 minlg:h-12 top-65 cursor-pointer left-0"
+                >
+                  <Image
+                    src={images.left}
+                    alt="left"
+                    className={theme === 'light' && 'filter invert'}
+                  />
+                </div>
+
+                <div
+                  onClick={() => {}}
+                  className="absolute w-8 h-16 minlg:w-12 minlg:h-12 top-65 cursor-pointer right-0"
+                >
+                  <Image
+                    src={images.right}
+                    alt="left"
+                    className={theme === 'light' && 'filter invert'}
+                  />
+                </div>
+              </>
             </div>
           </div>
         </div>
