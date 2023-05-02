@@ -88,7 +88,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className="flexBetween w-full fixed z-10 p-4 flex-row border-b
+      className="flex justify-between w-full fixed z-10 p-4 flex-row border-b
          dark:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1"
     >
       <div className="flex flex-1 flex-row justify-start">

@@ -7,7 +7,7 @@ import Button from './Button';
 
 const FooterLinks = ({ heading, items }) => {
   return (
-    <div className="flex-1 justify-start items-start">
+    <div className="flex-1 justify-start items-start w-full">
       <h3 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl mb-10">
         {heading}
       </h3>
