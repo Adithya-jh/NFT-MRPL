@@ -14,9 +14,9 @@ export default function Home() {
   const scrollRef = useRef(null);
   const [width, setWidth] = useState(0);
   const { theme, setTheme } = useTheme();
+  const [hideButton, setHideButton] = useState(false);
 
   const handleScroll = (direction) => {
-    const [hideButton, setHideButton] = useState(false);
     const { current } = scrollRef;
 
     const scrollAmount = window.innerWidth > 1800 ? 270 : 210;
@@ -32,10 +32,22 @@ export default function Home() {
     const { current } = scrollRef;
     const { current: parent } = parentRef;
 
-    if (current?.scrollW) {
+    if (current?.scrollWidth >= parent?.offsetWidth) {
+      setHideButton(false);
+    } else {
+      setHideButton(true);
     }
   };
 
+  useEffect(() => {
+    isScrollable();
+
+    window.addEventListener('resize', isScrollable);
+
+    return () => {
+      window.removeEventListener('resize', isScrollable);
+    };
+  });
   return (
     <div className="flex justify-center sm:px-4 p-12 ">
       <div className="w-full minmd:w-4/5 ">
