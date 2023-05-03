@@ -170,6 +170,7 @@ export default function Home() {
                   nft={{
                     i,
                     name: `Nifty Nft ${i}`,
+                    price: (10 - i * 0.532).toFixed(2),
                     seller: `0x${makeId(3)}...${makeId(4)}`,
                     owner: `0x${makeId(3)}...${makeId(4)}`,
                     description: 'Cool NFT on Sale',
