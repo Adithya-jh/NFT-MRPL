@@ -14,20 +14,27 @@ const create_Nft = () => {
   const [fileUrl, setFileUrl] = useState(null);
   const { theme } = useTheme();
 
-  const fileStyle = useMemo(() => '', []);
+  const fileStyle = useMemo(
+    () =>
+      'dark:bg-nft-black-1 p-5 bg-red border dark:border-red border-nft-gray-2 flex flex-col items-centerrounded-sm border-dashed',
+    []
+  );
 
-  const onDrop = () => {
+  const onDrop = useCallback(() => {
     //upload image to ipfs
-  };
+  }, []);
 
   const {
     getRootProps,
-    getInputedProps,
+    getInputProps,
     isDragActive,
     isDragAccept,
     isDragReject,
   } = useDropzone({
     onDrop,
+    accept: 'image/*',
+    // style: fileStyle,
+    maxSize: 5000000,
   });
 
   return (
@@ -37,11 +44,21 @@ const create_Nft = () => {
           CREATE YOUR OWN NFT
         </h1>
 
-        <div className="mt-16">
-          <p className="font-poppins dark:text-white mt-6 text-nft-black-1 font-semibold text-lg">
-            UPLOAD FILE
-          </p>
-          <div className={fileStyle}></div>
+        <div className="mt-3">
+          <div className="mt-16">
+            <p className="font-poppins dark:text-white mt-6 text-nft-black-1 font-semibold text-lg">
+              UPLOAD FILE
+            </p>
+            <div className="relative mt-6 w-full p-5 h-500">
+              <div
+                {...getRootProps()}
+                className={fileStyle}
+                // className="dark:bg-nft-black-1 bg-white border dark:border-white border-nft-gray-2 flex flex-col items-center p-5 rounded-sm border-dashed"
+              >
+                <input {...getInputProps()} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

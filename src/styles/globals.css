@@ -126,3 +126,7 @@
 }
 
 /* Tailwind Guide:-https://tailwindcss.com/docs/guides/nextjs */
+
+#upload {
+  padding: 10px;
+}
