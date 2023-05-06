@@ -49,7 +49,7 @@ const create_Nft = () => {
 
   const fileStyle2 = useMemo(
     () =>
-      `'dark:bg-nft-black-1 bg-white border dark:border-red border-nft-gray-2 flex flex-row pt-5 pb-5 pr-5 items-center rounded-sm border-dashed' 
+      `'dark:bg-black bg-white border dark:border-red border-nft-gray-2 flex flex-row pt-5 pb-5 pr-5 items-center rounded-sm border-dashed' 
       ${isDragActive && 'border-file-active'}
       ${isDragAccept && 'border-file-accept'}
       ${isDragReject && 'border-file-reject'}
@@ -69,16 +69,16 @@ const create_Nft = () => {
             <p className="font-poppins dark:text-white mt-6 text-nft-black-1 font-semibold text-lg">
               UPLOAD FILE
             </p>
-            <div className="relative mt-6 pb-5 pt-5 h-500">
+            <div className="relative mt-6 pb-5 pt-5 h-500 border border-dashed">
               <div
                 {...getRootProps()}
-                className={fileStyle2}
-                // className="w-[50%] dark:bg-nft-black-1 bg-white border dark:border-white border-nft-gray-2 p-5 flex flex-row items-center rounded-sm border-dashed"
+                // className={fileStyle2}
+                className="dark:bg-nft-black-1  dark:border-white border-nft-gray-2 p-5 flex flex-row items-center rounded-sm border-dashed"
               >
                 <input {...getInputProps()} />
-                <div className="flexCenter flex-col text-center">
-                  <p className="font-poppins dark:text-white mt-6 text-nft-black-1 font-semibold text-lg">
-                    JPG,PNG,GIF,SVG,WEBM,MP3,MP4,
+                <div className="flex justify-center mt-6 mb-6 pt-6 items-center  text-center w-full h-[100%]">
+                  <p className="font-poppins z-2 light:text-black font-semibold text-lg">
+                    JPG,PNG,GIF,SVG,WEBM,MP3,MP4
                   </p>
                 </div>
               </div>
