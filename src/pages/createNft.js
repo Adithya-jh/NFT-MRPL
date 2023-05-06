@@ -58,31 +58,53 @@ const create_Nft = () => {
   );
 
   return (
-    <div className="flex justify-start align-middle sm:px-4 p-16">
+    <div className="flex justify-center align-middle sm:px-4 p-16">
       <div className="w-full">
-        <h1 className="font-poppins dark:text-white mt-6 text-nft-black-1 text-xl minlg:text-4xl font-semibold ml-4 xs:ml-0">
-          CREATE YOUR OWN NFT
+        <h1 className="font-poppins dark:text-white mt-6 text-nft-black-1 text-xl minlg:text-4xl font-semibold  xs:ml-0">
+          Create your own NFT
         </h1>
 
-        <div className="mt-3">
-          <div className="mt-16">
-            <p className="font-poppins dark:text-white mt-6 text-nft-black-1 font-semibold text-lg">
-              UPLOAD FILE
-            </p>
-            <div className="relative mt-6 pb-5 pt-5 h-500 border border-dashed">
-              <div
-                {...getRootProps()}
-                // className={fileStyle2}
-                className="dark:bg-nft-black-1  dark:border-white border-nft-gray-2 p-5 flex flex-row items-center rounded-sm border-dashed"
-              >
-                <input {...getInputProps()} />
-                <div className="flex justify-center mt-6 mb-6 pt-6 items-center  text-center w-full h-[100%]">
-                  <p className="font-poppins z-2 light:text-black font-semibold text-lg">
-                    JPG,PNG,GIF,SVG,WEBM,MP3,MP4
-                  </p>
+        <div className="mt-16">
+          <p className="font-poppins dark:text-white mt-6 text-nft-black-1 font-semibold text-lg">
+            Upload File
+          </p>
+          <div className="relative mt-6 pb-5 pt-5 h-500 border border-dashed">
+            <div
+              {...getRootProps()}
+              // className={fileStyle2}
+              className="dark:bg-nft-black-1  dark:border-white border-black flex flex-row items-center rounded-sm border-dashed"
+            >
+              <input {...getInputProps()} />
+              <div className="flex justify-center mt-5 mb-6 pt-6 items-center flex-col  text-center w-full h-[100%]">
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
+                  JPG,PNG,GIF,SVG,WEBM,MP3,MP4
+                </p>
+
+                <div className="mt-6 w-full flex justify-center">
+                  <Image
+                    src={images.upload}
+                    width={100}
+                    height={100}
+                    className={theme === 'light' && 'filter invert'}
+                    alt="uplaod"
+                  />
                 </div>
+
+                <p className="font-poppins mt-6 dark:text-white text-nft-black-1 font-semibold text-sm">
+                  Drag and Drop Files
+                </p>
+                <p className="font-poppins mt-3 dark:text-white text-nft-black-1 font-semibold text-sm">
+                  or Browse media on your device
+                </p>
               </div>
             </div>
+            {fileUrl && (
+              <aside>
+                <div>
+                  <Image src={fileUrl} alt="imgUploaded" />
+                </div>
+              </aside>
+            )}
           </div>
         </div>
       </div>
