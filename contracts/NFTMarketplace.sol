@@ -15,6 +15,8 @@ contract NFTMarketplace is ERC721URIStorage {
     uint listingPrice = 0.025 ether;
     address payable owner;
 
+    
+
     mapping(uint256 => MarketItem) private idToMarketItem;
 
     struct MarketItem{
@@ -69,7 +71,7 @@ contract NFTMarketplace is ERC721URIStorage {
 
     function resellToken(uint256 tokenId, uint256 price) public payable {
         require(idToMarketItem[tokenId].owner== msg.sender,"only item-owner can perform this operation.");
-        require(msg,value==listingPrice,"Price must be equal to listing price");
+        require(msg.value==listingPrice,"Price must be equal to listing price");
 
         idToMarketItem[tokenId].sold = false;
         idToMarketItem[tokenId].price = price;
