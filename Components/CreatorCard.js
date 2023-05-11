@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 
 import images from '../assets';
+
+import { NFTContext } from '../context/NFTContext';
 
 export default function CreatorCard({
   rank,
@@ -9,6 +11,8 @@ export default function CreatorCard({
   CreatorName,
   CreatorEths,
 }) {
+  const { nftCurrency } = useContext(NFTContext);
+
   return (
     <div
       className="min-w-190 minlg:min-w-240 dark:bg-nft-black-3
@@ -35,7 +39,8 @@ export default function CreatorCard({
           {CreatorName}
         </p>
         <div className="mt-1 font-poppins dark:text-white text-nft-black-1 font-semibold text-base">
-          {CreatorEths.toFixed(2)} <span className="font-normal">ETH</span>
+          {CreatorEths.toFixed(2)}{' '}
+          <span className="font-normal"> {nftCurrency}</span>
         </div>
       </div>
     </div>

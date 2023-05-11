@@ -9,6 +9,8 @@ import Link from 'next/link';
 import Button from './Button';
 
 import images from '../assets';
+
+import { NFTContext } from '../context/NFTContext';
 // import { isMobile } from 'web3modal';
 
 const MenuItems = ({ isMobile, active, setActive }) => {
@@ -57,9 +59,11 @@ const MenuItems = ({ isMobile, active, setActive }) => {
 
 const ButtonGroup = ({ setActive, router }) => {
   // const hasConnected = false;
-  const hasConnected = true;
 
-  return hasConnected ? (
+  const { connectWallet, currentAccount } = useContext(NFTContext);
+  // const hasConnected = true;
+
+  return currentAccount ? (
     <Button
       classStyles="mx-2 rounded-xl"
       btnName="Create"
@@ -73,7 +77,7 @@ const ButtonGroup = ({ setActive, router }) => {
     <Button
       classStyles="mx-2 rounded-xl"
       btnName="Connect"
-      handleClick={() => {}}
+      handleClick={connectWallet}
     />
   );
 };
