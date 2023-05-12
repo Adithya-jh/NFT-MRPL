@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useMemo, useCallback, useContext } from 'react';
+import { NFTContext } from '../../context/NFTContext';
 
 import { useRouter } from 'next/router';
 import { useDropzone } from 'react-dropzone';
@@ -13,6 +14,7 @@ import images from '../../assets';
 import Input from '../../Components/Input';
 
 const create_Nft = () => {
+  const { uploadToIPFS } = useContext(NFTContext);
   const [fileUrl, setFileUrl] = useState(null);
   const { theme } = useTheme();
 
@@ -38,8 +40,11 @@ const create_Nft = () => {
   //   [isDragActive, isDragAccept, isDragReject]
   // );
 
-  const onDrop = useCallback(() => {
+  const onDrop = useCallback(async (acceptedFile) => {
     //upload image to ipfs
+    const url = await uploadToIPFS(acceptedFile[0]);
+    console.log(url);
+    setFileUrl(url);
   }, []);
 
   const {
@@ -65,7 +70,6 @@ const create_Nft = () => {
     [isDragActive, isDragAccept, isDragReject]
   );
 
-  console.log(formInput);
   return (
     <div className="flex  sm:px-4 p-16">
       <div className="w-full align-middle justify-center">
@@ -110,7 +114,12 @@ const create_Nft = () => {
             {fileUrl && (
               <aside>
                 <div>
-                  <Image src={fileUrl} alt="imgUploaded" />
+                  <Image
+                    src={fileUrl}
+                    width={100}
+                    height={100}
+                    alt="imgUploaded"
+                  />
                 </div>
               </aside>
             )}

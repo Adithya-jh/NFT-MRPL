@@ -5,6 +5,22 @@ import { ethers } from 'ethers';
 import axios from 'axios';
 
 import { MarketAddress, MarketAddressAbi } from './constants';
+import { create as ipfsHttpClient } from 'ipfs-http-client';
+const ipfsClient = require('ipfs-http-client');
+
+const projectId = '2PgTO7vsyM59cpG2acNOeedn5ol';
+const projectSecret = '5941b98f66cd58b92f0809c0d4131348';
+const auth =
+  'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+
+const client = ipfsClient.create({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+  headers: {
+    authorization: auth,
+  },
+});
 
 export const NFTContext = React.createContext();
 
@@ -48,8 +64,22 @@ export const NFTProvider = ({ children }) => {
 
     // window.location.reload();
   };
+
+  const uploadToIPFS = async (file) => {
+    try {
+      const added = await client.add({ content: file });
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      // setFileUrl(url);
+      return url;
+    } catch (error) {
+      console.log('Error uploading file: ', error);
+    }
+  };
+
   return (
-    <NFTContext.Provider value={{ nftCurrency, connectWallet }}>
+    <NFTContext.Provider
+      value={{ nftCurrency, connectWallet, currentAccount, uploadToIPFS }}
+    >
       {children}
     </NFTContext.Provider>
   );
