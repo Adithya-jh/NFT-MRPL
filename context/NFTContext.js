@@ -68,9 +68,10 @@ export const NFTProvider = ({ children }) => {
   const uploadToIPFS = async (file) => {
     try {
       const added = await client.add({ content: file });
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = `https://jha-mrpl.infura-ipfs.io/ipfs/${added.path}`;
+      //jha-mrpl.infura-ipfs.io
       // setFileUrl(url);
-      return url;
+      https: return url;
     } catch (error) {
       console.log('Error uploading file: ', error);
     }
