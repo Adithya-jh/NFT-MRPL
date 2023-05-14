@@ -20,7 +20,7 @@ const create_Nft = () => {
 
   const fileStyle = useMemo(
     () =>
-      'dark:bg-nft-black-1  bg-white border dark:border-red border-nft-gray-2 flex flex-col items-center p-5 rounded-sm border-dashed',
+      'dark:bg-nft-black-1 bg-white border dark:border-red border-nft-gray-2 flex flex-col items-center p-5 rounded-sm border-dashed',
     []
   );
 

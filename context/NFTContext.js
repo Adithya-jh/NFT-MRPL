@@ -103,9 +103,6 @@ export const NFTProvider = ({ children }) => {
     }
   };
 
-
-
-  
   const createSale = async (url, formInputPrice, isReselling, id) => {
     const web3Modal = new Web3Modal({
       network: 'mainnet',
