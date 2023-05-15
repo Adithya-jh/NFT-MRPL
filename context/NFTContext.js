@@ -116,7 +116,7 @@ export const NFTProvider = ({ children }) => {
     const contract = fetchContract(signer);
 
     // const nftContract = new ethers.Contract(id, NFTAddressAbi, signer);
-    let listingPrice = await contract.getListingPrice();
+    const listingPrice = await contract.getListingPrice();
     // listingPrice = listingPrice.toString();
     const transaction = await contract.createToken(url, price, {
       value: listingPrice.toString(),

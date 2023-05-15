@@ -14,9 +14,11 @@ import images from '../../assets';
 import Input from '../../Components/Input';
 
 const create_Nft = () => {
-  const { uploadToIPFS } = useContext(NFTContext);
+  const { uploadToIPFS, createNFT } = useContext(NFTContext);
   const [fileUrl, setFileUrl] = useState(null);
   const { theme } = useTheme();
+
+  const router = useRouter();
 
   const fileStyle = useMemo(
     () =>
@@ -154,7 +156,7 @@ const create_Nft = () => {
           <Button
             btnName="Create NFT"
             className="rounded-xl"
-            handleClick={() => {}}
+            handleClick={() => createNFT(formInput, fileUrl)}
           />
         </div>
       </div>
