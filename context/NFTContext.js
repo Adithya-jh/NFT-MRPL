@@ -55,6 +55,7 @@ export const NFTProvider = ({ children }) => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
+    createSale('test', '0.025');
   }, []);
 
   const connectWallet = async () => {
@@ -104,13 +105,10 @@ export const NFTProvider = ({ children }) => {
   };
 
   const createSale = async (url, formInputPrice, isReselling, id) => {
-    const web3Modal = new Web3Modal({
-      network: 'mainnet',
-      cacheProvider: true,
-
-
-      
-    });
+    const web3Modal = new Web3Modal();
+    //   network: 'mainnet',
+    //   cacheProvider: true,
+    // });
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
